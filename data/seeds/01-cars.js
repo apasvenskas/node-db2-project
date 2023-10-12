@@ -6,7 +6,7 @@ const cars = [
         model: 'camry',
         mileage: 100000,
         title: 'clean',
-        transmision: 'automatic',
+        transmission: 'automatic',
     },
     {
         vin: '1234567891123',
@@ -14,20 +14,18 @@ const cars = [
         model: 'civic',
         mileage: 135000,
         title: 'clean',
-        transmision: 'manual',
+        transmission: 'manual',
     },
     {
         vin: '1234567893333',
         make: 'BMW',
         model: '540',
         mileage: 40000,
-        transmision: 'automatic',
+        transmission: 'automatic',
     }
 ]
 
-exports.seed = function(knex){
-    return knex('knex')
-    .truncate().then(() => {
-        return knex('cars').insert(cars)
-    }) 
+exports.seed = async function(knex){
+   await knex('cars').truncate()
+   await knex('cars').insert(cars)
 }
